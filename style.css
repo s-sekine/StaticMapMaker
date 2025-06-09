@@ -76,6 +76,7 @@ h1 {
     min-height: 100px; /* Minimum height before map loads */
     border: 1px dashed #ccc; /* Optional: to see the container bounds */
     background-color: #eee; /* Placeholder background */
+    display: none; /* Initially hidden */
 }
 
 #mapImage {

@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // 3. Display the map
             mapImage.src = staticMapUrl;
             mapImage.alt = `Map of ${centerKeyword}`;
+            document.querySelector('.map-container').style.display = 'block'; // Show map container
             downloadMapButton.style.display = 'block'; // Show download button
 
         } catch (error) {
@@ -72,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alert(`Error generating map: ${error.message}`);
             mapImage.alt = `Error generating map: ${error.message}`;
             mapImage.src = '';
+            document.querySelector('.map-container').style.display = 'none'; // Hide map container on error
             downloadMapButton.style.display = 'none';
         }
     });
