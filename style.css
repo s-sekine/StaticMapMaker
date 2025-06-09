@@ -1,0 +1,119 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 900px; /* Max width of the main container */
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.controls {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.controls div {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.controls label {
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: bold;
+}
+
+.controls input[type="text"],
+.controls input[type="range"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensures padding doesn't affect overall width */
+}
+
+.controls input[type="range"] {
+    cursor: pointer;
+}
+
+.controls button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    display: block; /* Make button take full width of its container */
+    width: 100%;
+    margin-top: 10px; /* Add some space above the button */
+}
+
+.controls button:hover {
+    background-color: #0056b3;
+}
+
+.map-container {
+    text-align: center; /* Center the image */
+    margin-bottom: 20px;
+    min-height: 100px; /* Minimum height before map loads */
+    border: 1px dashed #ccc; /* Optional: to see the container bounds */
+    background-color: #eee; /* Placeholder background */
+}
+
+#mapImage {
+    max-width: 100%; /* Ensure image is responsive and doesn't overflow */
+    height: auto;   /* Maintain aspect ratio */
+    border: 1px solid #bbb; /* Border around the map image */
+}
+
+#downloadMap {
+    padding: 10px 15px;
+    background-color: #28a745; /* Green color for download */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#downloadMap:hover {
+    background-color: #1e7e34;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .controls div {
+        flex-direction: row;
+        align-items: center;
+    }
+    .controls label {
+        margin-bottom: 0;
+        margin-right: 10px;
+        min-width: 120px; /* Give labels a minimum width for alignment */
+    }
+    .controls input[type="text"],
+    .controls input[type="range"] {
+        flex-grow: 1; /* Allow inputs to take available space */
+    }
+}
