@@ -42,11 +42,13 @@ h1 {
 }
 
 .controls input[type="text"],
-.controls input[type="range"] {
+.controls input[type="range"],
+.controls select {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box; /* Ensures padding doesn't affect overall width */
+    background-color: #fff; /* Match typical input background */
 }
 
 .controls input[type="range"] {
@@ -114,7 +116,8 @@ h1 {
         min-width: 120px; /* Give labels a minimum width for alignment */
     }
     .controls input[type="text"],
-    .controls input[type="range"] {
+    .controls input[type="range"],
+    .controls select {
         flex-grow: 1; /* Allow inputs to take available space */
     }
 }

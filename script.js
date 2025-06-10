@@ -1,3 +1,7 @@
+// API Keys - User needs to replace these with their actual keys
+const GEOCODING_API_KEY = 'YOUR_GOOGLE_GEOCODING_API_KEY'; // Replace with your Geocoding API key
+const STATIC_MAP_API_KEY = 'YOUR_GOOGLE_STATIC_MAP_API_KEY'; // Replace with your Static Map API key
+
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', () => {
     // Get DOM elements
@@ -8,10 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const heightValueSpan = document.getElementById('heightValue');
     const scaleSlider = document.getElementById('scale');
     const scaleValueSpan = document.getElementById('scaleValue');
-    const geocodingApiKeyInput = document.getElementById('geocodingApiKey');
-    const staticMapApiKeyInput = document.getElementById('staticMapApiKey');
     const zoomSlider = document.getElementById('zoom');
     const zoomValueSpan = document.getElementById('zoomValue');
+    const mapLanguageSelect = document.getElementById('mapLanguage');
     const generateMapButton = document.getElementById('generateMap');
     const mapImage = document.getElementById('mapImage');
     const downloadMapButton = document.getElementById('downloadMap');
@@ -28,18 +31,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const width = widthSlider.value;
         const height = heightSlider.value;
         const scale = scaleSlider.value;
-        const geocodingApiKey = geocodingApiKeyInput.value;
-        const staticMapApiKey = staticMapApiKeyInput.value;
         const zoomLevel = zoomSlider.value;
+        const selectedLanguage = mapLanguageSelect.value;
 
         if (!centerKeyword) {
             alert('Please enter a center point.');
             return;
         }
 
-        if (!geocodingApiKey || !staticMapApiKey) {
-            alert('Please enter both Geocoding and Static Map API keys in the input fields.');
-            mapImage.alt = 'API Key not provided. Please enter API keys in the input fields.';
+        if (GEOCODING_API_KEY === 'YOUR_GOOGLE_GEOCODING_API_KEY' || STATIC_MAP_API_KEY === 'YOUR_GOOGLE_STATIC_MAP_API_KEY') {
+            alert('Please replace placeholder API keys in script.js with your actual Google Cloud Platform API keys.');
+            mapImage.alt = 'API Key not provided. Please configure API keys in script.js';
             mapImage.src = ''; // Clear previous image
             downloadMapButton.style.display = 'none';
             return;
@@ -52,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // 1. Geocode the center point
-            const geocodingUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(centerKeyword)}&key=${geocodingApiKey}`;
+            const geocodingUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(centerKeyword)}&key=${GEOCODING_API_KEY}`;
             const geoResponse = await fetch(geocodingUrl);
             const geoData = await geoResponse.json();
 
@@ -63,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const location = geoData.results[0].geometry.location; // lat, lng
 
             // 2. Construct Static Map API URL
-            const staticMapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${location.lat},${location.lng}&zoom=${zoomLevel}&size=${width}x${height}&scale=${scale}&maptype=roadmap&key=${staticMapApiKey}`;
+            const staticMapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${location.lat},${location.lng}&zoom=${zoomLevel}&size=${width}x${height}&scale=${scale}&maptype=roadmap&language=${selectedLanguage}&key=${STATIC_MAP_API_KEY}`;
 
             // 3. Display the map
             mapImage.src = staticMapUrl;

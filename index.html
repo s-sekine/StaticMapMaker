@@ -27,16 +27,15 @@
                 <input type="range" id="scale" name="scale" min="1" max="4" value="1">
             </div>
             <div>
-                <label for="geocodingApiKey">Geocoding API Key:</label>
-                <input type="text" id="geocodingApiKey" name="geocodingApiKey">
-            </div>
-            <div>
-                <label for="staticMapApiKey">Static Map API Key:</label>
-                <input type="text" id="staticMapApiKey" name="staticMapApiKey">
-            </div>
-            <div>
                 <label for="zoom">Zoom Level: <span id="zoomValue">14</span></label>
                 <input type="range" id="zoom" name="zoom" min="1" max="20" value="14">
+            </div>
+            <div>
+                <label for="mapLanguage">Map Language:</label>
+                <select id="mapLanguage" name="mapLanguage">
+                    <option value="en" selected>English</option>
+                    <option value="ja">Japanese</option>
+                </select>
             </div>
             <button id="generateMap">Generate Map</button>
         </div>
